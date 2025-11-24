@@ -12,11 +12,17 @@ public class Player : MonoBehaviour
     public void Initialize()
     {
         status = new PlayerStatus();
-        condition = new PlayerCondition();
-        controller = new PlayerController();
+        
+        PlayerStatusData data = GameManager.Instance.dataManager.LoadPlayerStatus();
+
+        if (data != null)
+            status.LoadFromData(data);
+        else
+            status = new PlayerStatus(); // 기본값
+
+        // Condition 초기화
+        condition = new PlayerCondition(status);
         inventory = new Inventory();
-
+        controller = GetComponent<PlayerController>();
     }
-
-
 }

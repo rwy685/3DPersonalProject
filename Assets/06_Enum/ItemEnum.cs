@@ -4,9 +4,10 @@ using UnityEngine;
 
 public enum ItemType
 {
-    Equipment,
+    Weapon,
+    Armor,
     Consumable,
-    Resource
+    Resource,
 }
 
 public enum EquipType

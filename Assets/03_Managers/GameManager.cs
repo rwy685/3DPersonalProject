@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    private static GameManager Instance;
+    private static GameManager instance;
+
+    public static GameManager Instance { get { return instance; } }
 
 
     public CharacterManager characterManager { get; private set; }
@@ -15,17 +17,15 @@ public class GameManager : MonoBehaviour
     {
         if (Instance == null)
         {
-            Instance = this;
+            instance = this;
             DontDestroyOnLoad(gameObject);
 
-            characterManager = new CharacterManager();
-            dataManager = new DataManager();
+            characterManager = GetComponent<CharacterManager>();
+            dataManager = GetComponent<DataManager>();
         }
         else
         {
             Destroy(gameObject);
         }
     }
-
-
 }

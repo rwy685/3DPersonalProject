@@ -1,18 +1,31 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerCondition : MonoBehaviour
+public class PlayerCondition : IDamagable
 {
-    // Start is called before the first frame update
-    void Start()
+    PlayerStatus status;
+
+    public PlayerCondition(PlayerStatus status)
     {
-        
+        this.status = status;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void TakeDamage(int damage)
     {
-        
+        status.ReduceHP(damage);
+
+        if (status.CurrentHP <= 0)
+        {
+            Die();
+        }
+    }
+
+    public void Die()
+    {
+
     }
 }
+
+
+
