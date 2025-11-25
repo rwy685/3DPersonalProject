@@ -7,7 +7,7 @@ public class UIManager : MonoBehaviour
 {
     public PlayerStatusUI uiStatus;
     public InventoryUI uiInventory;
-    public ItemPopUpUI uiItemPopup;
+    public ItemPopupUI uiItemPopup;
 
     public GameObject statusPanel;
     public GameObject inventoryPanel;

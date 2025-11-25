@@ -4,7 +4,7 @@ using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UIItemPopup : MonoBehaviour
+public class ItemPopupUI : MonoBehaviour
 {
     public Text nameText;
     public Text valueText;

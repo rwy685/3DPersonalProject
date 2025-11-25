@@ -5,7 +5,7 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     [SerializeField] private PlayerCondition condition;
-    [SerializeField] private PlayerStatus status;
+    public PlayerStatus status;
     public PlayerController controller;
     public Inventory inventory;
 
@@ -25,4 +25,15 @@ public class Player : MonoBehaviour
         inventory = GetComponent<Inventory>();
         controller = GetComponent<PlayerController>();
     }
+
+    void Start()
+    {
+        var loader = new ItemLoader();
+
+        inventory.AddItem(1, 2); // 아이템ID = 1, count = 2
+        inventory.AddItem(2, 1);
+    }
+
+
+
 }

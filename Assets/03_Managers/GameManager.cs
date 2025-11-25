@@ -21,11 +21,16 @@ public class GameManager : MonoBehaviour
             DontDestroyOnLoad(gameObject);
 
             characterManager = GetComponent<CharacterManager>();
-            dataManager = GetComponent<DataManager>();
+            uiManager = GetComponent<UIManager>();
+            dataManager = new DataManager();
         }
         else
         {
             Destroy(gameObject);
         }
+    }
+    void Start()
+    {
+        characterManager.CreatePlayer();
     }
 }

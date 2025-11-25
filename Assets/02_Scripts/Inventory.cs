@@ -12,6 +12,7 @@ public class Inventory : MonoBehaviour
         loader = new ItemLoader();
     }
 
+   
     public void AddItem(int itemID, int count = 1)
     {
         var template = loader.GetByKey(itemID);
