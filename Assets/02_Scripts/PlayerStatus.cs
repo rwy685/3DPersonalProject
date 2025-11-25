@@ -11,12 +11,14 @@ public class PlayerStatus
     [SerializeField] private int attack;
     [SerializeField] private int defense;
     [SerializeField] private float critical;
+    [SerializeField] private int gold;
 
     public int MaxHP => maxHP;
     public int CurrentHP => currentHP;
     public int BaseAttack => attack;
     public int BaseDefense => defense;
     public float BaseCritical => critical;
+    public int Gold => gold;
 
     public event Action OnStatusChanged;
 

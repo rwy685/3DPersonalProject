@@ -34,23 +34,30 @@ public class UIManager : MonoBehaviour
         mainMenuInstance = GameObject.Instantiate(mainMenuPrefab, canvas.transform);
 
         // 패널 연결
-        statusPanel = mainMenuInstance.transform.Find("StatusPanel").gameObject;
-        inventoryPanel = mainMenuInstance.transform.Find("InventoryPanel").gameObject;
+        statusPanel = mainMenuInstance.transform.Find("UIStatus").gameObject;
+        inventoryPanel = mainMenuInstance.transform.Find("UIInventory").gameObject;
 
         uiStatus = statusPanel.GetComponent<PlayerStatusUI>();
         uiInventory = inventoryPanel.GetComponent<InventoryUI>();
-        uiItemPopup = mainMenuInstance.transform.Find("ItemPopup").GetComponent<ItemPopupUI>();
+        uiItemPopup = mainMenuInstance.transform.Find("UIItemPopup").GetComponent<ItemPopupUI>();
 
-        statusPanel.SetActive(false);
-        inventoryPanel.SetActive(false);
+     
         uiItemPopup.Hide();
     }
 
     public void ShowStatus(PlayerStatus status)
     {
         statusPanel.SetActive(true);
+
+        // 시작 위치를 화면 왼쪽 바깥으로 설정
+        statusPanel.transform.localPosition = new Vector3(-600, 0, 0);
+
+        // 0.25초 동안 안쪽으로 슬라이드
+        statusPanel.transform.DOLocalMoveX(0, 0.25f).SetEase(Ease.OutQuad);
+
         uiStatus.Init(status);
     }
+
 
     public void ShowInventory(Inventory inventory)
     {

@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class PlayerStatusUI : MonoBehaviour
 {
-    public Image hpBar;
     private PlayerStatus status;
 
     public void Init(PlayerStatus status)
@@ -17,7 +16,7 @@ public class PlayerStatusUI : MonoBehaviour
 
     void Refresh()
     {
-        hpBar.fillAmount = (float)status.CurrentHP / status.MaxHP;
+
     }
 }
 
