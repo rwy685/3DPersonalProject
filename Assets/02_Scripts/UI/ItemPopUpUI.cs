@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class ItemPopupUI : MonoBehaviour
 {
-    public Text nameText;
-    public Text valueText;
-    public Text descText;
+    public TextMeshProUGUI nameText;
+    public TextMeshProUGUI valueText;
+    public TextMeshProUGUI descText;
 
     public void Show(ItemInstance item)
     {

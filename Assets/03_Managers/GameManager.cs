@@ -1,13 +1,10 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
     private static GameManager instance;
-
-    public static GameManager Instance { get { return instance; } }
-
+    public static GameManager Instance => instance;
 
     public CharacterManager characterManager { get; private set; }
     public UIManager uiManager { get; private set; }
@@ -15,7 +12,7 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        if (Instance == null)
+        if (instance == null)
         {
             instance = this;
             DontDestroyOnLoad(gameObject);
@@ -23,14 +20,23 @@ public class GameManager : MonoBehaviour
             characterManager = GetComponent<CharacterManager>();
             uiManager = GetComponent<UIManager>();
             dataManager = new DataManager();
+
+            SceneManager.sceneLoaded += OnSceneLoaded;
         }
         else
         {
             Destroy(gameObject);
         }
     }
+
     void Start()
     {
         characterManager.CreatePlayer();
     }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        uiManager.InitUI();
+    }
 }
+

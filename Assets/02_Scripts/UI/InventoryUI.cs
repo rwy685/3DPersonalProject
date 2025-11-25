@@ -1,12 +1,12 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using System.Collections.Generic;
 
 public class InventoryUI : MonoBehaviour
 {
     public GameObject slotPrefab;
     public Transform slotRoot;
-    public int slotCount = 16;
+    public int slotCount = 30;
 
     private Inventory inventory;
     private List<InventorySlotUI> slotUIs = new List<InventorySlotUI>();
@@ -15,7 +15,6 @@ public class InventoryUI : MonoBehaviour
     {
         this.inventory = inventory;
 
-        // 이미 슬롯이 생성되었다면 리프레시만
         if (slotUIs.Count == 0)
             CreateSlots();
 
@@ -46,5 +45,6 @@ public class InventoryUI : MonoBehaviour
             GameManager.Instance.uiManager.ShowItemPopup(item);
     }
 }
+
 
 

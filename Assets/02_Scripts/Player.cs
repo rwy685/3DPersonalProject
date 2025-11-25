@@ -30,8 +30,8 @@ public class Player : MonoBehaviour
     {
         var loader = new ItemLoader();
 
-        inventory.AddItem(1, 2); // 아이템ID = 1, count = 2
-        inventory.AddItem(2, 1);
+        inventory.AddItem(1000, 2); // 아이템ID = 1, count = 2
+        inventory.AddItem(1001, 1);
     }
 
 
