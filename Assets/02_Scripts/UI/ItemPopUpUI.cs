@@ -13,6 +13,7 @@ public class ItemPopupUI : MonoBehaviour
 
     public void Show(ItemInstance item)
     {
+        Debug.Log($"[Popup] 받아온 ItemInstance: ID={item?.itemID}, name={item?.template?.name}");
         gameObject.SetActive(true);
 
         nameText.text = item.template.name;

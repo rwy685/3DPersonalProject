@@ -29,12 +29,12 @@ public class InventorySlotUI : MonoBehaviour
             icon.enabled = false;
             countText.text = "";
         }
-        //else
-        //{
-        //    icon.enabled = true;
-        //    icon.sprite = LoadIcon(item.template.key);
-        //    countText.text = item.count.ToString();
-        //}
+        else
+        {
+            //icon.enabled = true;
+            //icon.sprite = LoadIcon(item.template.key);
+            countText.text = item.count.ToString();
+        }
     }
 
     public void OnClick()
