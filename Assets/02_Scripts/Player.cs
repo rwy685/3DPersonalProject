@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    public PlayerCondition condition;
-    public PlayerStatus status;
+    [SerializeField] private PlayerCondition condition;
+    [SerializeField] private PlayerStatus status;
     public PlayerController controller;
     public Inventory inventory;
 
@@ -22,7 +22,7 @@ public class Player : MonoBehaviour
 
         // Condition 초기화
         condition = new PlayerCondition(status);
-        inventory = new Inventory();
+        inventory = GetComponent<Inventory>();
         controller = GetComponent<PlayerController>();
     }
 }

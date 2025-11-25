@@ -42,8 +42,10 @@ public class Inventory : MonoBehaviour
             items.Remove(item);
     }
 
-    public ItemInstance GetItem(int itemID)
+    public ItemInstance GetItemBySlot(int slotIndex)
     {
-        return items.Find(i => i.itemID == itemID);
+        if (slotIndex < 0 || slotIndex >= items.Count)
+            return null;
+        return items[slotIndex];
     }
 }

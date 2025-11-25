@@ -5,11 +5,13 @@ using UnityEngine;
 public class CharacterManager : MonoBehaviour
 {
     public Player player { get; private set; }
+    public GameObject playerPrefab;
 
     public void CreatePlayer()
     {
-        player = new Player();
+        var obj = Instantiate(playerPrefab);
+        player = obj.GetComponent<Player>();
         player.Initialize();
     }
-    
 }
+
