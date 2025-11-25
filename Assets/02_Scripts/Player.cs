@@ -28,10 +28,21 @@ public class Player : MonoBehaviour
 
     void Start()
     {
-        var loader = new ItemLoader();
-
-        inventory.AddItem(1000, 2); // 아이템ID = 1, count = 2
+        // 테스트용 아이템 추가
+        inventory.AddItem(1000, 2);
         inventory.AddItem(1001, 1);
+        inventory.AddItem(1002, 2);
+        inventory.AddItem(1003, 1);
+        inventory.AddItem(1004, 2);
+        inventory.AddItem(1005, 1);
+        inventory.AddItem(1006, 2);
+        inventory.AddItem(1007, 1);
+        inventory.AddItem(1008, 2);
+        inventory.AddItem(1009, 1);
+
+
+        Debug.Log("테스트용 아이템 추가 완료");
+
     }
 
 

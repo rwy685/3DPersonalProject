@@ -31,8 +31,8 @@ public class InventorySlotUI : MonoBehaviour
         }
         else
         {
-            //icon.enabled = true;
-            //icon.sprite = LoadIcon(item.template.key);
+            icon.enabled = true;
+            icon.sprite = LoadIcon(item.template.iconName);
             countText.text = item.count.ToString();
         }
     }
@@ -41,6 +41,11 @@ public class InventorySlotUI : MonoBehaviour
     {
         onClick?.Invoke(index);
     }
+    private Sprite LoadIcon(string iconName)
+    {
+        return Resources.Load<Sprite>($"Icons/{iconName}");
+    }
+
 }
 
 

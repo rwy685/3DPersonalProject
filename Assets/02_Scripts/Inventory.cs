@@ -4,15 +4,13 @@ using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
-    public ItemLoader loader;
+    public ItemInfoLoader loader;
     public List<ItemInstance> items = new List<ItemInstance>();
 
     void Awake()
     {
-        loader = new ItemLoader();
+        loader = new ItemInfoLoader();
     }
-
-   
     public void AddItem(int itemID, int count = 1)
     {
         var template = loader.GetByKey(itemID);
@@ -29,9 +27,10 @@ public class Inventory : MonoBehaviour
         }
         else
         {
-            items.Add(new ItemInstance(template, count));
+            items.Add(new ItemInstance(template, count)); // 수정 완료
         }
     }
+
 
     public void RemoveItem(int itemID, int count = 1)
     {
