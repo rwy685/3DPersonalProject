@@ -32,6 +32,21 @@ public class ItemInfo
     public DesignEnums.ItemRarity itemRarity;
 
     /// <summary>
+    /// 공격력
+    /// </summary>
+    public int baseAttack;
+
+    /// <summary>
+    /// 방어력
+    /// </summary>
+    public int baseDefense;
+
+    /// <summary>
+    /// 체력
+    /// </summary>
+    public int baseHp;
+
+    /// <summary>
     /// 옵션 목록
     /// </summary>
     public List<int> optionList;

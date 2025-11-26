@@ -8,10 +8,12 @@ public class Player : MonoBehaviour
     public PlayerStatus status;
     public PlayerController controller;
     public Inventory inventory;
+    public EquipmentManager equipmentManager;
 
     public void Initialize()
     {
         status = new PlayerStatus();
+        equipmentManager = new EquipmentManager();
         
         PlayerStatusData data = GameManager.Instance.dataManager.LoadPlayerStatus();
 

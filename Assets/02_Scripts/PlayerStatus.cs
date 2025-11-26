@@ -6,13 +6,14 @@ using UnityEngine;
 [Serializable]
 public class PlayerStatus
 {
-    private int maxHP;
-    private int currentHP;
-    private int attack;
-    private int defense;
-    private float critical;
-    private int gold;
+    [SerializeField] private int maxHP;
+    [SerializeField] private int currentHP;
+    [SerializeField] private int attack;
+    [SerializeField] private int defense;
+    [SerializeField] private float critical;
+    [SerializeField] private int gold;
 
+    // 기존 프로퍼티
     public int MaxHP => maxHP;
     public int CurrentHP => currentHP;
     public int BaseAttack => attack;
@@ -20,7 +21,18 @@ public class PlayerStatus
     public float BaseCritical => critical;
     public int Gold => gold;
 
+    // 장비 보정치
+    private int equipAttack;
+    private int equipDefense;
+    private int equipHp;
+
+    // 최종 값
+    public int FinalAttack => attack + equipAttack;
+    public int FinalDefense => defense + equipDefense;
+    public int FinalMaxHp => maxHP + equipHp;
+
     public event Action OnStatusChanged;
+
 
     public PlayerStatus()
     {
@@ -31,17 +43,29 @@ public class PlayerStatus
         critical = 5f;
         gold = 2000;
     }
+    void RaiseStatusChanged()
+    {
+        OnStatusChanged?.Invoke();
+    }
+
+    public void AddEquipStats(int a, int d, int h)
+    {
+        equipAttack += a;
+        equipDefense += d;
+        equipHp += h;
+        RaiseStatusChanged();
+    }
 
     public void ReduceHP(int damage)
     {
-        currentHP = Mathf.Clamp(currentHP - damage, 0, maxHP);
-        OnStatusChanged?.Invoke();
+        currentHP = Mathf.Clamp(currentHP - damage, 0, FinalMaxHp);
+        RaiseStatusChanged();
     }
 
     public void AddHP(int amount)
     {
-        currentHP = Mathf.Clamp(currentHP + amount, 0, maxHP);
-        OnStatusChanged?.Invoke();
+        currentHP = Mathf.Clamp(currentHP + amount, 0, FinalMaxHp);
+        RaiseStatusChanged();
     }
 
     //Data -> Json 변환용
