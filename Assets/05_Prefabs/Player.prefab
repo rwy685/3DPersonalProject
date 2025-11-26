@@ -47,11 +47,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   status:
-    maxHP: 0
-    currentHP: 0
-    attack: 0
-    defense: 0
-    critical: 0
+    maxHP: 200
+    currentHP: 200
+    attack: 5
+    defense: 2
+    critical: 10
+    gold: 3000
   controller: {fileID: 5249449971988600680}
   inventory: {fileID: 2653308207768712025}
 --- !u!114 &2653308207768712025
