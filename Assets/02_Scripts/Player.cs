@@ -31,15 +31,15 @@ public class Player : MonoBehaviour
     void Start()
     {
         // 테스트용 아이템 추가
-        inventory.AddItem(1000, 2);
+        inventory.AddItem(1000, 1);
         inventory.AddItem(1001, 1);
-        inventory.AddItem(1002, 2);
+        inventory.AddItem(1002, 1);
         inventory.AddItem(1003, 1);
-        inventory.AddItem(1004, 2);
+        inventory.AddItem(1004, 1);
         inventory.AddItem(1005, 1);
-        inventory.AddItem(1006, 2);
+        inventory.AddItem(1006, 1);
         inventory.AddItem(1007, 1);
-        inventory.AddItem(1008, 2);
+        inventory.AddItem(1008, 1);
         inventory.AddItem(1009, 1);
 
 

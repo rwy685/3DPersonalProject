@@ -7,17 +7,15 @@ public class InventoryUI : MonoBehaviour
 {
     public GameObject slotPrefab;
     public Transform slotRoot;
-    [SerializeField] private int slotCount;
+    public int slotCount = 30;
 
     private Inventory inventory;
     private List<InventorySlotUI> slotUIs = new List<InventorySlotUI>();
 
-    public bool isInitialized = false;
-
-    // ★ 추가된 변수들 (필터 상태)
     public DesignEnums.ItemType? currentTypeFilter = null;
     public DesignEnums.ItemRarity? currentRarityFilter = null;
 
+    public bool isInitialized = false;
 
     public void Init(Inventory inventory)
     {
@@ -27,6 +25,10 @@ public class InventoryUI : MonoBehaviour
         {
             CreateSlots();
             isInitialized = true;
+
+            // 장비 변경 이벤트 구독
+            var player = GameManager.Instance.characterManager.player;
+            player.equipmentManager.OnEquipmentChanged += RefreshEquipMarks;
         }
 
         Refresh();
@@ -39,42 +41,56 @@ public class InventoryUI : MonoBehaviour
         {
             var obj = Instantiate(slotPrefab, slotRoot);
             var slot = obj.GetComponent<InventorySlotUI>();
-            slot.Init(i, OnClickSlot); // 아이템 바로 넘김
+            slot.Init(i, ClickSlot);
             slotUIs.Add(slot);
         }
     }
 
     public void Refresh()
     {
-        // 1) 원본 리스트
-        List<ItemInstance> filtered = inventory.items;
+        if (inventory == null)
+            return;
 
-        // 2) 타입 필터 적용
-        if (currentTypeFilter != null)
+        List<ItemInstance> items = inventory.items;
+
+        // 필터 적용
+        List<ItemInstance> filtered = new List<ItemInstance>();
+
+        foreach (var item in items)
         {
-            filtered = filtered.FindAll(i => i.template.itemType == currentTypeFilter);
+            if (currentTypeFilter != null &&
+                item.template.itemType != currentTypeFilter.Value)
+                continue;
+
+            if (currentRarityFilter != null &&
+                item.template.itemRarity != currentRarityFilter.Value)
+                continue;
+
+            filtered.Add(item);
         }
 
-        // 3) 레어리티 필터 적용
-        if (currentRarityFilter != null)
-        {
-            filtered = filtered.FindAll(i => i.template.itemRarity == currentRarityFilter);
-        }
-
-        // 4) 슬롯에 적용
+        // 슬롯 반영
         for (int i = 0; i < slotUIs.Count; i++)
         {
             if (i < filtered.Count)
                 slotUIs[i].SetItem(filtered[i]);
             else
-                slotUIs[i].Clear();
+                slotUIs[i].SetItem(null);
         }
     }
 
-    // 슬롯 클릭 → 팝업 호출
-    void OnClickSlot(ItemInstance item)
+
+    // 장비 변경 시 (E) 표시만 갱신
+    public void RefreshEquipMarks()
     {
-        GameManager.Instance.uiManager.ShowItemPopup(item);
+        foreach (var slot in slotUIs)
+            slot.RefreshEquipState();
+    }
+
+    void ClickSlot(ItemInstance item)
+    {
+        if (item != null)
+            GameManager.Instance.uiManager.ShowItemPopup(item);
     }
 
     IEnumerator ScrollToTopNextFrame()
@@ -84,9 +100,12 @@ public class InventoryUI : MonoBehaviour
 
         var scroll = GetComponentInChildren<ScrollRect>();
         if (scroll != null)
+        {
             scroll.verticalNormalizedPosition = 1f;
+        }
     }
 }
+
 
 
 

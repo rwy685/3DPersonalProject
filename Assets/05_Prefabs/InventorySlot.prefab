@@ -495,3 +495,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 1878517631508978670}
   countText: {fileID: 5827031595966534084}
+  equipMark: {fileID: 2243509548283239644}

@@ -1,7 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using DG.Tweening;
+﻿using DG.Tweening;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
 public class ItemPopupUI : MonoBehaviour
@@ -11,24 +10,41 @@ public class ItemPopupUI : MonoBehaviour
     public TextMeshProUGUI addedStatText;
     public TextMeshProUGUI descText;
 
+    public Button equipButton;
+    public Button unequipButton;
+
     private ItemInstance currentItem;
 
     public void Show(ItemInstance item)
     {
         currentItem = item;
 
+        var player = GameManager.Instance.characterManager.player;
+        var eq = player.equipmentManager;
+
+        bool isEquipped = (eq.weapon == item || eq.armor == item);
+
+        equipButton.gameObject.SetActive(!isEquipped);
+        unequipButton.gameObject.SetActive(isEquipped);
+
         nameText.text = item.template.name;
         descText.text = item.template.Description;
 
-        // 1. 기본 스탯
+        // 기본 스탯
         if (item.template.itemType == DesignEnums.ItemType.Weapon)
-            baseStatText.text = $"공격력 {item.template.baseAttack}";
+        {
+            baseStatText.text = $"기본 공격력 : {item.template.baseAttack}";
+        }
         else if (item.template.itemType == DesignEnums.ItemType.Armor)
-            baseStatText.text = $"방어력 {item.template.baseDefense}";
+        {
+            baseStatText.text = $"기본 방어력 : {item.template.baseDefense}";
+        }
         else
-            baseStatText.text = ""; // potion 같은 타입 대비
+        {
+            baseStatText.text = "";
+        }
 
-        // 2. 추가 옵션
+        // 추가 옵션
         addedStatText.text = "";
         var optionLoader = GameManager.Instance.dataManager.optionInfoLoader;
 
@@ -38,23 +54,27 @@ public class ItemPopupUI : MonoBehaviour
             addedStatText.text += $"{optData.Name} +{opt.value}\n";
         }
 
+        gameObject.SetActive(true);
+
         // 팝업 애니메이션
         transform.localScale = Vector3.zero;
         transform.DOScale(Vector3.one, 0.2f).SetEase(Ease.OutBack);
-
-        gameObject.SetActive(true);
     }
 
     public void OnClickEquip()
     {
         var player = GameManager.Instance.characterManager.player;
         player.equipmentManager.Equip(currentItem, player.status);
+
+        gameObject.SetActive(false);
     }
 
     public void OnClickUnequip()
     {
         var player = GameManager.Instance.characterManager.player;
         player.equipmentManager.Unequip(currentItem, player.status);
+
+        gameObject.SetActive(false);
     }
 
     public void Hide()
@@ -62,6 +82,7 @@ public class ItemPopupUI : MonoBehaviour
         gameObject.SetActive(false);
     }
 }
+
 
 
 
