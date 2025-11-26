@@ -5,6 +5,15 @@ using System.IO;
 
 public class DataManager
 {
+    public ItemInfoLoader itemInfoLoader;
+    public OptionInfoLoader optionInfoLoader;
+
+    public DataManager()
+    {
+        itemInfoLoader = new ItemInfoLoader();       // 추가됨
+        optionInfoLoader = new OptionInfoLoader();   // 추가됨
+    }
+
     public void SavePlayerStatus(PlayerStatus status)
     {
         PlayerStatusData data = status.ToData();
@@ -23,4 +32,5 @@ public class DataManager
         return JsonUtility.FromJson<PlayerStatusData>(json);
     }
 }
+
 

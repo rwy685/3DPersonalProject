@@ -29,18 +29,23 @@ public class InventorySlotUI : MonoBehaviour
             icon.enabled = false;
             countText.text = "";
         }
-        //else
-        //{
-        //    icon.enabled = true;
-        //    icon.sprite = LoadIcon(item.template.key);
-        //    countText.text = item.count.ToString();
-        //}
+        else
+        {
+            icon.enabled = true;
+            icon.sprite = LoadIcon(item.template.iconName);
+            countText.text = item.count.ToString();
+        }
     }
 
     public void OnClick()
     {
         onClick?.Invoke(index);
     }
+    private Sprite LoadIcon(string iconName)
+    {
+        return Resources.Load<Sprite>($"Icons/{iconName}");
+    }
+
 }
 
 

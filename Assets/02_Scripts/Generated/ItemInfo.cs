@@ -1,10 +1,10 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 
 [Serializable]
-public class Item
+public class ItemInfo
 {
     /// <summary>
     /// ID
@@ -17,27 +17,42 @@ public class Item
     public string name;
 
     /// <summary>
-    /// 공격력
-    /// </summary>
-    public int value;
-
-    /// <summary>
     /// 설명
     /// </summary>
     public string Description;
 
-}
-public class ItemLoader
-{
-    public List<Item> ItemsList { get; private set; }
-    public Dictionary<int, Item> ItemsDict { get; private set; }
+    /// <summary>
+    /// 타입
+    /// </summary>
+    public DesignEnums.ItemType itemType;
 
-    public ItemLoader(string path = "JSON/Item")
+    /// <summary>
+    /// 등급
+    /// </summary>
+    public DesignEnums.ItemRarity itemRarity;
+
+    /// <summary>
+    /// 옵션 목록
+    /// </summary>
+    public List<int> optionList;
+
+    /// <summary>
+    /// 아이콘 이름
+    /// </summary>
+    public string iconName;
+
+}
+public class ItemInfoLoader
+{
+    public List<ItemInfo> ItemsList { get; private set; }
+    public Dictionary<int, ItemInfo> ItemsDict { get; private set; }
+
+    public ItemInfoLoader(string path = "JSON/ItemInfo")
     {
         string jsonData;
         jsonData = Resources.Load<TextAsset>(path).text;
         ItemsList = JsonUtility.FromJson<Wrapper>(jsonData).Items;
-        ItemsDict = new Dictionary<int, Item>();
+        ItemsDict = new Dictionary<int, ItemInfo>();
         foreach (var item in ItemsList)
         {
             ItemsDict.Add(item.key, item);
@@ -47,10 +62,10 @@ public class ItemLoader
     [Serializable]
     private class Wrapper
     {
-        public List<Item> Items;
+        public List<ItemInfo> Items;
     }
 
-    public Item GetByKey(int key)
+    public ItemInfo GetByKey(int key)
     {
         if (ItemsDict.ContainsKey(key))
         {
@@ -58,7 +73,7 @@ public class ItemLoader
         }
         return null;
     }
-    public Item GetByIndex(int index)
+    public ItemInfo GetByIndex(int index)
     {
         if (index >= 0 && index < ItemsList.Count)
         {

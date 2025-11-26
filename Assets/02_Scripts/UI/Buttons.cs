@@ -6,19 +6,20 @@ public class Buttons : MonoBehaviour
 {
     public void OnClickInventoryBtn()
     {
-        var player = GameManager.Instance.characterManager.player;
-        GameManager.Instance.uiManager.ShowInventory(player.inventory);
+        GameManager.Instance.uiManager.PushUI(GameManager.Instance.uiManager.inventoryPanel);
     }
+
 
     public void OnClickPlayerStatusBtn()
     {
-        var player = GameManager.Instance.characterManager.player;
-        GameManager.Instance.uiManager.ShowStatus(player.status);
+        GameManager.Instance.uiManager.PushUI(GameManager.Instance.uiManager.statusPanel);
     }
 
-    public void OnClickHideAll()
+
+    public void OnClickBackBtn()
     {
-        GameManager.Instance.uiManager.HideAll();
+        GameManager.Instance.uiManager.PopUI();
     }
 
-}    
+
+}
