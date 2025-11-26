@@ -6,12 +6,12 @@ using UnityEngine;
 [Serializable]
 public class PlayerStatus
 {
-    [SerializeField] private int maxHP;
-    [SerializeField] private int currentHP;
-    [SerializeField] private int attack;
-    [SerializeField] private int defense;
-    [SerializeField] private float critical;
-    [SerializeField] private int gold;
+    private int maxHP;
+    private int currentHP;
+    private int attack;
+    private int defense;
+    private float critical;
+    private int gold;
 
     public int MaxHP => maxHP;
     public int CurrentHP => currentHP;
@@ -21,6 +21,16 @@ public class PlayerStatus
     public int Gold => gold;
 
     public event Action OnStatusChanged;
+
+    public PlayerStatus()
+    {
+        maxHP = 100;
+        currentHP = 100;
+        attack = 10;
+        defense = 5;
+        critical = 5f;
+        gold = 2000;
+    }
 
     public void ReduceHP(int damage)
     {
