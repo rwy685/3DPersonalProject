@@ -17,6 +17,8 @@ public class UIManager : MonoBehaviour
     {
         mainMenuPanel.SetActive(true);
 
+        var player = GameManager.Instance.characterManager.player;
+
         // 스택 패널은 기본적으로 꺼둔다
         statusPanel.SetActive(false);
         inventoryPanel.SetActive(false);
