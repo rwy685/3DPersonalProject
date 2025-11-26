@@ -21,10 +21,10 @@ public class PlayerStatusUI : MonoBehaviour
 
     void Refresh()
     {
-        attackText.text = status.BaseAttack.ToString();
-        defenseText.text = status.BaseDefense.ToString();
+        attackText.text = status.FinalAttack.ToString();
+        defenseText.text = status.FinalDefense.ToString();
         criticalText.text = status.BaseCritical.ToString("F1");
-        hpText.text = $"{status.CurrentHP} / {status.MaxHP}";
+        hpText.text = $"{status.CurrentHP} / {status.FinalMaxHp}";
     }
 }
 

@@ -7,7 +7,7 @@ public class InventorySlotUI : MonoBehaviour
 {
     public Image icon;
     public TextMeshProUGUI countText;
-
+    public TextMeshProUGUI equipMark;
     private ItemInstance currentItem;
     private int index;
     private Action<ItemInstance> onClick;
