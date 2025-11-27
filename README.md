@@ -74,47 +74,45 @@
 ## 프로젝트 파일 구조
 
 Assets
- ┃
- ┃
- ┣ 📂02_Scripts
- ┃ ┣ 📂Generated // Excel->Json->C# 데이터 변환용 및 Enum
- ┃ ┃ ┣ DesignEnums.cs
- ┃ ┃ ┣ ItemInfo.cs
- ┃ ┃ ┗  OptionInfo.cs
- ┃ ┣ 📂Item // 아이템 관련 및 아이템데이터저장 
- ┃ ┃ ┣ ItemInstance.cs
- ┃ ┃ ┣ ItemOptionValue.cs
- ┃ ┃ ┗  SaveData.cs
- ┃ ┣ 📂Player // 플레이어 스탯 및 인벤토리 관련
- ┃ ┃ ┣ Inventory.cs
- ┃ ┃ ┣ Player.cs
- ┃ ┃ ┣ PlayerCondition.cs
- ┃ ┃ ┣ PlayerController.cs
- ┃ ┃ ┣ PlayerStatus.cs
- ┃ ┃ ┗ PlayerStatusData.cs
- ┃ ┣ 📂Save_Load // 저장/로드 버튼
- ┃ ┃ ┣ LoadButton.cs
- ┃ ┃ ┗ SaveButton.cs
- ┃ ┣ 📂UI // UI관련 기능
- ┃ ┃ ┣ 📂Inventory
- ┃ ┃ ┃ ┣ InventorySlotUI.cs
- ┃ ┃ ┃ ┣ InventoryTabButtons.cs
- ┃ ┃ ┃ ┣ InventoryUI.cs
- ┃ ┃ ┃ ┗ ItemPopUpUI.cs
- ┃ ┃ ┣📂 PlayerHUD //플레이어 HUD UI 관련 기능
- ┃ ┃ ┃ ┣ GoldUI.cs
- ┃ ┃ ┃ ┗ PlayerHUDUI.cs
- ┃ ┃ ┣ 📂Status // 플레이어 스탯 UI 관련 기능
- ┃ ┃ ┃ ┗ PlayerStatusUI.cs
- ┃ ┃ ┣ Buttons.cs
- ┃ ┃ ┗ Inventory.meta
- ┣ 📂03_Managers // 매니저 스크립트 모음
- ┃ ┣ CharacterManager.cs
- ┃ ┣ DataManager.cs
- ┃ ┣ EquipmentManager.cs
- ┃ ┣ GameManager.cs
- ┃ ┣ HUDManager.cs
- ┗ ┗ UIManager.cs
+┣ 📂02_Scripts
+┃ ┣ 📂Generated // Excel->Json->C# 데이터 변환용 및 Enum
+┃ ┃ ┣ DesignEnums.cs
+┃ ┃ ┣ ItemInfo.cs
+┃ ┃ ┗  OptionInfo.cs
+┃ ┣ 📂Item // 아이템 관련 및 아이템데이터저장 
+┃ ┃ ┣ ItemInstance.cs
+┃ ┃ ┣ ItemOptionValue.cs
+┃ ┃ ┗  SaveData.cs
+┃ ┣ 📂Player // 플레이어 스탯 및 인벤토리 관련
+┃ ┃ ┣ Inventory.cs
+┃ ┃ ┣ Player.cs
+┃ ┃ ┣ PlayerCondition.cs
+┃ ┃ ┣ PlayerController.cs
+┃ ┃ ┣ PlayerStatus.cs
+┃ ┃ ┗ PlayerStatusData.cs
+┃ ┣ 📂Save_Load // 저장/로드 버튼
+┃ ┃ ┣ LoadButton.cs
+┃ ┃ ┗ SaveButton.cs
+┃ ┣ 📂UI // UI관련 기능
+┃ ┃ ┣ 📂Inventory
+┃ ┃ ┃ ┣ InventorySlotUI.cs
+┃ ┃ ┃ ┣ InventoryTabButtons.cs
+┃ ┃ ┃ ┣ InventoryUI.cs
+┃ ┃ ┃ ┗ ItemPopUpUI.cs
+┃ ┃ ┣📂 PlayerHUD //플레이어 HUD UI 관련 기능
+┃ ┃ ┃ ┣ GoldUI.cs
+┃ ┃ ┃ ┗ PlayerHUDUI.cs
+┃ ┃ ┣ 📂Status // 플레이어 스탯 UI 관련 기능
+┃ ┃ ┃ ┗ PlayerStatusUI.cs
+┃ ┃ ┣ Buttons.cs
+┃ ┃ ┗ Inventory.meta
+┣ 📂03_Managers // 매니저 스크립트 모음
+┃ ┣ CharacterManager.cs
+┃ ┣ DataManager.cs
+┃ ┣ EquipmentManager.cs
+┃ ┣ GameManager.cs
+┃ ┣ HUDManager.cs
+┗ ┗ UIManager.cs
 
 
 ## Trouble-shooting
