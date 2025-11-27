@@ -73,6 +73,7 @@
 
 ## 프로젝트 파일 구조
 
+```
 Assets
 ┣ 📂02_Scripts
 ┃ ┣ 📂Generated // Excel->Json->C# 데이터 변환용 및 Enum
@@ -113,7 +114,7 @@ Assets
 ┃ ┣ GameManager.cs
 ┃ ┣ HUDManager.cs
 ┗ ┗ UIManager.cs
-
+```
 
 ## Trouble-shooting
 
