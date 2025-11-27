@@ -12,7 +12,7 @@ public class Player : MonoBehaviour
 
     public void Initialize()
     {
-        // 기본 상태 생성
+        // 플레이어 스탯 생성
         status = new PlayerStatus();
 
         // 장비 매니저 생성
@@ -25,7 +25,18 @@ public class Player : MonoBehaviour
 
     void Start()
     {
-        // 테스트용 아이템 추가
+
+        // Load 게임이면 테스트 아이템 추가하지 않음
+        if (GameManager.Instance.dataManager.cachedLoadData != null)
+            return;
+
+        // New 게임일 때만 테스트 아이템 추가
+        AddTestItems();
+    }
+
+    // 테스트용 아이템 추가
+    private void AddTestItems()
+    {
         inventory.AddItem(1000, 1);
         inventory.AddItem(1001, 1);
         inventory.AddItem(1002, 1);
@@ -37,9 +48,7 @@ public class Player : MonoBehaviour
         inventory.AddItem(1008, 1);
         inventory.AddItem(1009, 1);
 
-
         Debug.Log("테스트용 아이템 추가 완료");
-
     }
 
     //===================================

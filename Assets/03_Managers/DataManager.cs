@@ -5,8 +5,8 @@ public class DataManager
 {
     public ItemInfoLoader itemInfoLoader;
     public OptionInfoLoader optionInfoLoader;
-
     public SaveData cachedLoadData;
+    public bool isNewGame = false;
 
     private string SavePath => Application.persistentDataPath + "/SaveData.json";
 
