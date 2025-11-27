@@ -12,17 +12,12 @@ public class Player : MonoBehaviour
 
     public void Initialize()
     {
+        // 기본 상태 생성
         status = new PlayerStatus();
+
+        // 장비 매니저 생성
         equipmentManager = new EquipmentManager();
-        
-        PlayerStatusData data = GameManager.Instance.dataManager.LoadPlayerStatus();
 
-        if (data != null)
-            status.LoadFromData(data);
-        else
-            status = new PlayerStatus(); // 기본값
-
-        // Condition 초기화
         condition = new PlayerCondition(status);
         inventory = GetComponent<Inventory>();
         controller = GetComponent<PlayerController>();
@@ -47,6 +42,19 @@ public class Player : MonoBehaviour
 
     }
 
+    //===================================
+    // 데이터 저장 및 불러오기 용
+    //===================================
+    public void ApplyLoadedData(SaveData data)
+    {
+        // Status 복원
+        status.LoadFromData(data.status);
 
+        // Inventory 복원
+        inventory.LoadFromData(data.inventory);
+
+        // 장비 복원
+        equipmentManager.LoadFromData(data.equipment, status);
+    }
 
 }

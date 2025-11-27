@@ -48,4 +48,40 @@ public class Inventory : MonoBehaviour
             return null;
         return items[slotIndex];
     }
+    //===================================
+    // 데이터 저장 및 불러오기 용
+    //===================================
+    public List<ItemInstanceData> ToDataList()
+    {
+        var list = new List<ItemInstanceData>();
+
+        foreach (var item in items)
+        {
+            list.Add(new ItemInstanceData()
+            {
+                itemID = item.itemID,
+                count = item.count,
+                options = item.options   // 옵션 값 그대로 저장
+            });
+        }
+
+        return list;
+    }
+
+    public void LoadFromData(List<ItemInstanceData> dataList)
+    {
+        items.Clear();
+
+        foreach (var data in dataList)
+        {
+            var template = loader.GetByKey(data.itemID);
+            if (template == null)
+                continue;
+
+            var instance = new ItemInstance(template, data.count);
+            instance.options = data.options; // 기존 옵션 복원
+            items.Add(instance);
+        }
+    }
+
 }

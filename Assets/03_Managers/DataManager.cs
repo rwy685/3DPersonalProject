@@ -1,36 +1,54 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.IO;
 using UnityEngine;
-using System.IO;
 
 public class DataManager
 {
     public ItemInfoLoader itemInfoLoader;
     public OptionInfoLoader optionInfoLoader;
 
+    public SaveData cachedLoadData;
+
+    private string SavePath => Application.persistentDataPath + "/SaveData.json";
+
     public DataManager()
     {
-        itemInfoLoader = new ItemInfoLoader();       
-        optionInfoLoader = new OptionInfoLoader();   
+        itemInfoLoader = new ItemInfoLoader();
+        optionInfoLoader = new OptionInfoLoader();
     }
 
-    public void SavePlayerStatus(PlayerStatus status)
+    // SAVE
+    public void SaveAll(PlayerStatus status, Inventory inventory, EquipmentManager eq)
     {
-        PlayerStatusData data = status.ToData();
+        SaveData data = new SaveData()
+        {
+            status = status.ToData(),
+            inventory = inventory.ToDataList(),
+            equipment = eq.ToData()
+        };
+
         string json = JsonUtility.ToJson(data, true);
-        File.WriteAllText(Application.persistentDataPath + "/player.json", json);
+        File.WriteAllText(SavePath, json);
+
+        Debug.Log("게임 저장 완료: " + SavePath);
     }
 
-    public PlayerStatusData LoadPlayerStatus()
+    // LOAD
+    public SaveData LoadAll()
     {
-        string path = Application.persistentDataPath + "/player.json";
-
-        if (!File.Exists(path))
+        if (!File.Exists(SavePath))
             return null;
 
-        string json = File.ReadAllText(path);
-        return JsonUtility.FromJson<PlayerStatusData>(json);
+        string json = File.ReadAllText(SavePath);
+        return JsonUtility.FromJson<SaveData>(json);
+    }
+
+    // DELETE
+    public void ClearSave()
+    {
+        if (File.Exists(SavePath))
+            File.Delete(SavePath);
     }
 }
+
 
 

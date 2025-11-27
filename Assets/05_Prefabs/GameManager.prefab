@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 1050890157147641113}
   - component: {fileID: 2667364770704743420}
   - component: {fileID: 7857278172192367407}
-  - component: {fileID: 7363195367722716348}
   - component: {fileID: 7043664170215948620}
   m_Layer: 0
   m_Name: GameManager
@@ -61,22 +60,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerPrefab: {fileID: 5053628632630046534, guid: b2ccb02f45f30e3438418ab9075cc4e4,
     type: 3}
---- !u!114 &7363195367722716348
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6413352164930781881}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c02ceb8930d01ef438c8c09bb8ef3b84, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mainMenuPanel: {fileID: 0}
-  statusPanel: {fileID: 0}
-  inventoryPanel: {fileID: 0}
-  itemPopup: {fileID: 0}
 --- !u!114 &7043664170215948620
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -89,4 +72,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67dc2620a9bf476478249122b569b228, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hud: {fileID: 0}

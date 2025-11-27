@@ -71,6 +71,38 @@ public class EquipmentManager
     {
         status.RemoveEquipStats(item.TotalAttack, item.TotalDefense, item.TotalHp, item.TotalCritical);
     }
+
+    //===================================
+    // 데이터 저장 및 불러오기 용
+    //===================================
+    public EquipmentData ToData()
+    {
+        return new EquipmentData()
+        {
+            weaponID = weapon?.itemID ?? -1,
+            armorID = armor?.itemID ?? -1
+        };
+    }
+
+    public void LoadFromData(EquipmentData data, PlayerStatus status)
+    {
+        var inv = GameManager.Instance.characterManager.player.inventory;
+
+        if (data.weaponID >= 0)
+        {
+            var item = inv.items.Find(i => i.itemID == data.weaponID);
+            if (item != null)
+                Equip(item, status);
+        }
+
+        if (data.armorID >= 0)
+        {
+            var item = inv.items.Find(i => i.itemID == data.armorID);
+            if (item != null)
+                Equip(item, status);
+        }
+    }
+
 }
 
 

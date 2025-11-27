@@ -9,9 +9,14 @@ public class CharacterManager : MonoBehaviour
 
     public void CreatePlayer()
     {
+        if (player != null) return;
+
         var obj = Instantiate(playerPrefab);
         player = obj.GetComponent<Player>();
         player.Initialize();
+
+        DontDestroyOnLoad(obj);
     }
 }
+
 
