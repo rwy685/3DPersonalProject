@@ -7,7 +7,7 @@ public class InventoryUI : MonoBehaviour
 {
     public GameObject slotPrefab;
     public Transform slotRoot;
-    public int slotCount = 30;
+    private int slotCount = 30;
 
     private Inventory inventory;
     private List<InventorySlotUI> slotUIs = new List<InventorySlotUI>();
