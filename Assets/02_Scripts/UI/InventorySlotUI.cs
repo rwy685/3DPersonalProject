@@ -23,6 +23,16 @@ public class InventorySlotUI : MonoBehaviour
 
         if (equipMark != null)
             equipMark.gameObject.SetActive(false);
+
+        //AddListener 활용
+        var btn = GetComponent<Button>();
+        btn.onClick.RemoveAllListeners();
+        btn.onClick.AddListener(() =>
+        {
+            if (currentItem != null)
+                this.onClick?.Invoke(currentItem);
+        });
+
     }
 
     // 슬롯에 아이템 설정
@@ -52,12 +62,6 @@ public class InventorySlotUI : MonoBehaviour
 
         if (equipMark != null)
             equipMark.gameObject.SetActive(false);
-    }
-
-    public void OnClick()
-    {
-        if (currentItem != null)
-            onClick?.Invoke(currentItem);
     }
 
     // 외부에서 장비 변경 이벤트 후 호출됨

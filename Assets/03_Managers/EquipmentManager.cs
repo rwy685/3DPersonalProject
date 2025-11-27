@@ -64,12 +64,12 @@ public class EquipmentManager
 
     private void AddStats(ItemInstance item, PlayerStatus status)
     {
-        status.AddEquipStats(item.TotalAttack, item.TotalDefense, item.TotalHp);
+        status.AddEquipStats(item.TotalAttack, item.TotalDefense, item.TotalHp, item.TotalCritical);
     }
 
     private void RemoveStats(ItemInstance item, PlayerStatus status)
     {
-        status.AddEquipStats(-item.TotalAttack, -item.TotalDefense, -item.TotalHp);
+        status.RemoveEquipStats(item.TotalAttack, item.TotalDefense, item.TotalHp, item.TotalCritical);
     }
 }
 

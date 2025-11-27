@@ -55,19 +55,22 @@ public class ItemInstance
     }
 
     // 옵션 합산 함수
-    private int GetOptionTotal(string optionName)
+    private int GetOptionTotal(DesignEnums.OptionType type)
     {
         var optionLoader = GameManager.Instance.dataManager.optionInfoLoader;
 
         return options
-            .Where(o => optionLoader.GetByKey(o.optionID).Name == optionName)
+            .Where(o => optionLoader.GetByKey(o.optionID).OptionType == type)
             .Sum(o => o.value);
     }
 
+
     // 최종 스탯 계산
-    public int TotalAttack => template.baseAttack + GetOptionTotal("Attack");
-    public int TotalDefense => template.baseDefense + GetOptionTotal("Defense");
-    public int TotalHp => template.baseHp + GetOptionTotal("HP");
+    public int TotalAttack => template.baseAttack + GetOptionTotal(DesignEnums.OptionType.Attack);
+    public int TotalDefense => template.baseDefense + GetOptionTotal(DesignEnums.OptionType.Defense);
+    public int TotalHp => template.baseHp + GetOptionTotal(DesignEnums.OptionType.HP);
+    public float TotalCritical => GetOptionTotal(DesignEnums.OptionType.Critical);
+
 
     public Sprite GetIcon()
     {

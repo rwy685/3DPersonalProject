@@ -8,6 +8,8 @@ public class GameManager : MonoBehaviour
 
     public CharacterManager characterManager { get; private set; }
     public UIManager uiManager { get; private set; }
+
+    public HUDManager hudManager { get; private set; }
     public DataManager dataManager { get; private set; }
 
     private void Awake()
@@ -19,6 +21,7 @@ public class GameManager : MonoBehaviour
 
             characterManager = GetComponent<CharacterManager>();
             uiManager = GetComponent<UIManager>();
+            hudManager = GetComponent<HUDManager>();
             dataManager = new DataManager();
 
             SceneManager.sceneLoaded += OnSceneLoaded;
@@ -32,6 +35,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         characterManager.CreatePlayer();
+        hudManager.Init(characterManager.player.status);
     }
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)

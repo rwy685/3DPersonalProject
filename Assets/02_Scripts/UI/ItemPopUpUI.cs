@@ -1,7 +1,8 @@
-﻿using DG.Tweening;
+﻿using System.Text;
+using DG.Tweening;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
 
 public class ItemPopupUI : MonoBehaviour
 {
@@ -31,18 +32,19 @@ public class ItemPopupUI : MonoBehaviour
         descText.text = item.template.Description;
 
         // 기본 스탯
-        if (item.template.itemType == DesignEnums.ItemType.Weapon)
-        {
-            baseStatText.text = $"기본 공격력 : {item.template.baseAttack}";
-        }
-        else if (item.template.itemType == DesignEnums.ItemType.Armor)
-        {
-            baseStatText.text = $"기본 방어력 : {item.template.baseDefense}";
-        }
-        else
-        {
-            baseStatText.text = "";
-        }
+        StringBuilder sb = new StringBuilder();
+
+        if (item.template.baseAttack != 0)
+            sb.AppendLine($"기본 공격력 : {item.template.baseAttack}");
+
+        if (item.template.baseDefense != 0)
+            sb.AppendLine($"기본 방어력 : {item.template.baseDefense}");
+
+        if (item.template.baseHp != 0)
+            sb.AppendLine($"기본 체력 : {item.template.baseHp}");
+
+        baseStatText.text = sb.ToString();
+
 
         // 추가 옵션
         addedStatText.text = "";
@@ -51,8 +53,9 @@ public class ItemPopupUI : MonoBehaviour
         foreach (var opt in item.options)
         {
             var optData = optionLoader.GetByKey(opt.optionID);
-            addedStatText.text += $"{optData.Name} +{opt.value}\n";
+            addedStatText.text += string.Format(optData.Description, opt.value) + "\n";
         }
+
 
         gameObject.SetActive(true);
 

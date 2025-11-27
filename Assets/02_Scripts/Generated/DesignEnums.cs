@@ -14,4 +14,11 @@ public static class DesignEnums
         Rare = 1,
         Legendary = 2,
     }
+    public enum OptionType
+    {
+        Attack = 0,
+        Defense = 1,
+        Critical = 2,
+        HP = 3,
+    }
 }

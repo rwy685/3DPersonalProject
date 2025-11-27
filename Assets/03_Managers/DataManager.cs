@@ -10,8 +10,8 @@ public class DataManager
 
     public DataManager()
     {
-        itemInfoLoader = new ItemInfoLoader();       // 추가됨
-        optionInfoLoader = new OptionInfoLoader();   // 추가됨
+        itemInfoLoader = new ItemInfoLoader();       
+        optionInfoLoader = new OptionInfoLoader();   
     }
 
     public void SavePlayerStatus(PlayerStatus status)

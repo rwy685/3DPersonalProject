@@ -31,6 +31,11 @@ public class OptionInfo
     /// </summary>
     public int MaxValue;
 
+    /// <summary>
+    /// 옵션
+    /// </summary>
+    public DesignEnums.OptionType OptionType;
+
 }
 public class OptionInfoLoader
 {

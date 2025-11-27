@@ -33,10 +33,9 @@ public class PlayerStatusUI : MonoBehaviour
         if (status == null)
             return;
 
-        // PlayerStatus에 FinalAttack/FinalDefense/FinalMaxHp 프로퍼티가 있어야 함
         attackText.text = status.FinalAttack.ToString();
         defenseText.text = status.FinalDefense.ToString();
-        criticalText.text = status.BaseCritical.ToString("F1");
+        criticalText.text = status.FinalCritical.ToString("F1");
         hpText.text = $"{status.CurrentHP} / {status.FinalMaxHp}";
     }
 }
