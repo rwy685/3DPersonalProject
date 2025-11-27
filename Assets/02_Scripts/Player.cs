@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    [SerializeField] private PlayerCondition condition;
+    public PlayerCondition condition;
     public PlayerStatus status;
     public PlayerController controller;
     public Inventory inventory;
