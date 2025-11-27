@@ -71,11 +71,11 @@ Assets
  ┃ ┣ 📂Generated // Excel->Json->C# 데이터 변환용 및 Enum
  ┃ ┃ ┣ DesignEnums.cs
  ┃ ┃ ┣ ItemInfo.cs
- ┃ ┃ ┣ OptionInfo.cs
+ ┃ ┃ ┗  OptionInfo.cs
  ┃ ┣ 📂Item // 아이템 관련 및 아이템데이터저장 
  ┃ ┃ ┣ ItemInstance.cs
  ┃ ┃ ┣ ItemOptionValue.cs
- ┃ ┃ ┣ SaveData.cs
+ ┃ ┃ ┗  SaveData.cs
  ┃ ┣ 📂Player // 플레이어 스탯 및 인벤토리 관련
  ┃ ┃ ┣ Inventory.cs
  ┃ ┃ ┣ Player.cs
