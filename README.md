@@ -19,12 +19,19 @@
 ## 💜 주요기능
 
 -GameManager : 전역 매니저 및 신 전용 매니저 생성 및 관리를 담당합니다.
+
 -Charactermanager : 플레이어 프리펩을 생성하고, 전역으로 관리합니다.
+
 -UIManager : MainScene 전용 UI패널들을 스택으로 관리합니다.
+
 -HUDManager : Player의 전역 HUDUI를 관리합니다.
+
 -EquipmentManager : Inventory에 있는 아이템을 장착/해제 기능을 처리합니다.
+
 -DataManager : 플레이어/아이템/인벤토리/장착 여부를 JSON화 해서 저장/로드 합니다.
+
 -itemInfo(Loader) : ItemInfo를 Json에서 데이터로 변환합니다.
+
 -OptionInfo(Loader) : ItemInfo에 적용될 Option을 Json에서 데이터로 변환합니다. 
 
 
